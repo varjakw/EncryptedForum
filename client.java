@@ -1,59 +1,48 @@
-import java.net.*;
 import java.io.*;
+import java.net.*;
+import java.util.Scanner;
 
-public class client{
+// Client class
+public class client
+{
+    public static void main(String[] args) throws IOException
+    {
+        try
+        {
+            Scanner scanner = new Scanner(System.in);
+            InetAddress ip = InetAddress.getByName("localhost");
 
-	//init socket and streams
-	private Socket socket = NULL;
-	private DataInputStream  dis = NULL;
-	private DataOutputStream dos = NULL;
+            // connect to server port 5050
+            Socket socket = new Socket(ip, 5050);
 
-	public Client(String address, int port){
-		//create connection
-		try{
-			socket = new Socket(address,port)
-			System.out.println("Connection established")
+            DataInputStream dis = new DataInputStream(socket.getInputStream());
+            DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
 
-			//input from user
-			dis = new DataInputStream(System.in);
-			//send output to socket
-			dos = new DataOutputStream(socket.getOutputStream());		
-		}catch(UnknownHostException x){
-			System.out.println("Unknown Host Exception")
-		}catch(IOException y){
-			System.out.println("IO Exception")
-		}
+            while (true)
+            {
+                System.out.println(dis.readUTF());
+                String message = scanner.nextLine();
+                dos.writeUTF(message);
 
-		//read from input until "Over"
-		String line = "";
+                if(message.equals("2"))
+                {
+                    socket.close();
+                    System.out.println("Connection closed");
+                    break;
+                }
 
-		while(!line.equals("Over")){
-			try{
-				line = dis.readLine();
-				out.writeUTF(line);
-			}catch(IOException y){
-			System.out.println("IO Exception");
-			}
-		}
+                // print message recieved
+                String received = dis.readUTF();
+                System.out.println(received);
+            }
 
-		//close conection
-		try{
-			dis.close();
-			out.close();
-			socket.close();
-		}catch(IOException y){
-			System.out.print("IO Exception");
-		}
-	}
+            // closing resources
+            scanner.close();
+            dis.close();
+            dos.close();
 
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in); 
-    	System.out.println("Enter your port");
-
-    	int port = scanner.nextInt();
-
-		//create client
-		Client client = new Client("127.0.0.1", port)
-	}
-
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }
