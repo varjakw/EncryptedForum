@@ -31,17 +31,21 @@ docker network connect messageboard server
 ## How to run it
 Powershell Terminal
 ```
-cd \\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes\messageboard\_data\X11
+cd C:\Users\Public\Programs\EncryptedForum\X11
 
 ls
 
 javac -cp . *.java
 ```
+MobaXterm Terminal 0 
+```
+ xhost + 1 2 7 . 0 . 0 . 1
+ ```
 MobaXterm Terminal 1
 ```
 docker start -i server
 
-cd /messageboard
+C:\Users\Public\Programs\EncryptedForum\X11
 
 java -cp . server
 ```
@@ -50,7 +54,7 @@ MobaXterm Terminal 2
 ```
 docker start -i user1
 
-cd /messageboard
+C:\Users\Public\Programs\EncryptedForum\X11
 
 java -cp . client
 ```
@@ -58,7 +62,7 @@ MobaXterm Terminal 3
 ```
 docker start -i user2
 
-cd /messageboard
+C:\Users\Public\Programs\EncryptedForum\X11
 
 java -cp . client
 ```
@@ -66,7 +70,7 @@ MobaXterm Terminal 4
 ```
 docker start -i user3
 
-cd /messageboard
+C:\Users\Public\Programs\EncryptedForum\X11
 
 java -cp . client
 ```
