@@ -1,4 +1,4 @@
-# EncryptedMessageBoard
+# EncryptedForum
 Encrypted message board for Advanced Computer Networks Assignment 2
 
 # TCP
