@@ -29,7 +29,7 @@ docker network connect messageboard server
 ```
 
 ## How to run it
-Terminal 1
+Powershell Terminal
 ```
 cd \\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes\messageboard\_data\X11
 
@@ -37,7 +37,16 @@ ls
 
 javac -cp . *.java
 ```
-Terminal 2
+MobaXterm Terminal 1
+```
+docker start -i server
+
+cd /messageboard
+
+java -cp . server
+```
+
+MobaXterm Terminal 2
 ```
 docker start -i user1
 
@@ -45,7 +54,7 @@ cd /messageboard
 
 java -cp . client
 ```
-Terminal 3
+MobaXterm Terminal 3
 ```
 docker start -i user2
 
@@ -53,7 +62,7 @@ cd /messageboard
 
 java -cp . client
 ```
-Terminal 4
+MobaXterm Terminal 4
 ```
 docker start -i user3
 
