@@ -45,7 +45,7 @@ MobaXterm Terminal 1
 ```
 docker start -i server
 
-C:\Users\Public\Programs\EncryptedForum\X11
+cd C:\Users\Public\Programs\EncryptedForum\X11
 
 java -cp . server
 ```
@@ -54,7 +54,7 @@ MobaXterm Terminal 2
 ```
 docker start -i user1
 
-C:\Users\Public\Programs\EncryptedForum\X11
+cd C:\Users\Public\Programs\EncryptedForum\X11
 
 java -cp . client
 ```
@@ -62,7 +62,7 @@ MobaXterm Terminal 3
 ```
 docker start -i user2
 
-C:\Users\Public\Programs\EncryptedForum\X11
+cd C:\Users\Public\Programs\EncryptedForum\X11
 
 java -cp . client
 ```
@@ -70,7 +70,7 @@ MobaXterm Terminal 4
 ```
 docker start -i user3
 
-C:\Users\Public\Programs\EncryptedForum\X11
+cd C:\Users\Public\Programs\EncryptedForum\X11
 
 java -cp . client
 ```
