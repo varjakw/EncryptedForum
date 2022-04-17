@@ -2,38 +2,31 @@ import java.io.*;
 import java.net.*;
 import java.util.Scanner;
 
-// Client class
-public class client
-{
-    public static void main(String[] args) throws IOException
-    {
-        try
-        {
+public class client {
+    public static void main(String[] args) throws IOException {
+        try {
             Scanner scanner = new Scanner(System.in);
             InetAddress ip = InetAddress.getByName("localhost");
-
+            System.out.println("Client created");
             // connect to server port 5050
             Socket socket = new Socket(ip, 5050);
-
+            System.out.println("Connected to server");
             DataInputStream dis = new DataInputStream(socket.getInputStream());
             DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
 
-            while (true)
-            {
+            while (true) {
                 System.out.println(dis.readUTF());
                 String message = scanner.nextLine();
                 dos.writeUTF(message);
 
-                if(message.equals("2"))
-                {
+                if (message.equals("exit")) {
                     socket.close();
                     System.out.println("Connection closed");
                     break;
                 }
 
-                // print message recieved
-                String received = dis.readUTF();
-                System.out.println(received);
+                //print messages recieved
+                System.out.println(dis.readUTF());
             }
 
             // closing resources
@@ -41,7 +34,7 @@ public class client
             dis.close();
             dos.close();
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
